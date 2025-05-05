@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: animator
+    env: php
+    plan: free
+    buildCommand: "composer install --no-dev && php artisan config:cache && php artisan route:cache && php artisan view:cache"
+    startCommand: "php artisan serve --host 0.0.0.0 --port $PORT"
+    autoDeploy: true
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        value: CIEgAO3UQOrK+7EDAc6oYcA638v4CVLaeA1y7vZbx1c=
